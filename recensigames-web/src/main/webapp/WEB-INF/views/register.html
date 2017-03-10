@@ -1,0 +1,141 @@
+<div id="registerForm">
+	<form class="form-horizontal" method="post" id="contact_form" name="registrationForm">
+		<div class="form-group">
+			<label class="col-md-5 control-label">Nome</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> <input name="name" placeholder="Nome"
+						class="form-control" type="text" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Cognome</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-user"></i></span> <input name="cognome" placeholder="Cognome"
+						class="form-control" type="text" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Data di nascita</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-calendar"></i></span> <input 
+						name="dataNascita" placeholder="gg/mm/aaaa" class="form-control" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Indirizzo</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-home"></i></span> <input name="indirizzo"
+						placeholder="Es. 'via rossi 2'" class="form-control" type="text" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Comune</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-home"></i></span> <input name="comune" placeholder="Comune"
+						class="form-control" type="text" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Provincia</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-home"></i></span> <input name="provincia" 
+						placeholder="Provincia" class="form-control" type="text" />
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Password</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-home"></i></span> <input name="password" required data-ng-minlength="8"
+						placeholder="Password" class="form-control" type="password" 
+						data-ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&_-£%^§°])[A-Za-z\d$@$!%*#?&_-£%^§°]/"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-5 control-label">Password</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-home"></i></span> <input name="password" required data-ng-minlength="8"
+						placeholder="Password" class="form-control" type="password" 
+						data-ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&_-£%^§°])[A-Za-z\d$@$!%*#?&_-£%^§°]/"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Nazione</label>
+			<div class="col-md-3 selectContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-list"></i></span> <select
+						class="form-control selectpicker">
+						<option value="">Seleziona la nazione</option>
+						<option value="">Italia</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">Username</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-earphone"></i></span> <input name="username" required data-ng-minlength="4"
+						placeholder="Username" class="form-control" type="text"
+						data-ng-pattern="/^(?=.*[a-z])(?=.*\d)(?=.*[._-])[a-z\d._-]/"></input>
+						<label class="error" data-ng-show="registrationForm.username.$error.required && !form.username.$pristine">Campo obbligatorio</label>
+		    		<label class="error" data-ng-show="registrationForm.username.$error.minlength">Lunghezza minima 4 caratteri</label>
+				  	<label class="error" data-ng-show="registrationForm.username.$error.pattern">Lettere minuscole, numeri, punto, trattino o trattino basso</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label">email</label>
+			<div class="col-md-3 inputGroupContainer">
+				<div class="input-group">
+					<span class="input-group-addon"><i
+						class="glyphicon glyphicon-envelope"></i></span> <input name="email" required
+						placeholder="e-mail" class="form-control" type="email"></input>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-5 control-label"></label>
+			<div class="col-md-4">
+				<button type="submit" class="btn btn-primary" >
+					Prosegui <span class="glyphicon glyphicon-send"></span>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>

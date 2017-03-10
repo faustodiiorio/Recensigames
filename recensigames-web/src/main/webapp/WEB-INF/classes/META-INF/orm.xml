@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+
+	<entity name="Categoria" class="it.recensigames.model.Categoria">
+		<named-query name="getAllCategories">
+			<query>Select c from Categoria c</query>
+		</named-query>
+	</entity>
+	<entity name="Console" class="it.recensigames.model.Console">
+		<named-query name="getAllConsoles">
+			<query>Select c from Console c</query>
+		</named-query>
+		<named-query name="getConsolesByProductor">
+			<query>Select c from Console c JOIN c.produttoreConsoles p where p.nomeProduttoreConsoles = :nomeProduttoreConsoles</query>
+		</named-query>
+	</entity>
+	<entity name="Gioco" class="it.recensigames.model.Gioco">
+		<named-query name="getAllGames">
+			<query>Select g from Gioco g</query>
+		</named-query>
+		<named-query name="getGamesByTitle">
+			<query>Select g from Gioco g where g.titoloGioco = :titoloGioco</query>
+		</named-query>
+		<named-query name="getGamesByConsole">
+			<query>select g from Gioco g JOIN g.listaConsoles c where c.nomeConsole = :nomeConsole</query>
+		</named-query>
+		<named-query name="getGameByTitleAndConsole">
+			<query>Select g from Gioco g JOIN g.listaConsoles c where g.titoloGioco = :titoloGioco AND c.nomeConsole = :nomeConsole</query>
+		</named-query>
+	</entity>
+	<entity name="ProduttoreConsoles" class="it.recensigames.model.ProduttoreConsoles">
+		<named-query name="getAllConsoleProductors">
+			<query>Select p from ProduttoreConsoles p</query>
+		</named-query>
+	</entity>
+	<entity name="ProduttoreGiochi" class="it.recensigames.model.ProduttoreGiochi">
+		<named-query name="getAllGameProductors">
+			<query>Select p from ProduttoreGiochi p</query>
+		</named-query>
+	</entity>
+	<entity name="Recensione" class="it.recensigames.model.Recensione">
+		<named-query name="getAllSolutions">
+			<query>Select r from Recensione r</query>
+		</named-query>
+	</entity>
+	<entity name="Utente" class="it.recensigames.model.Utente">
+		<named-query name="getUserByUsernameAndPassword">
+			<query>Select u from Utente u where u.username = :username AND u.password = :password</query>
+		</named-query>
+		<named-query name="getAllUsers">
+			<query>Select u from Utente u</query>
+		</named-query>
+	</entity>
+</entity-mappings>

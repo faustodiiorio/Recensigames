@@ -1,0 +1,18 @@
+#all{
+	min-height: 100%;
+	position: relative;
+/* 	font-family: 'Indie Flower'; */
+/* 	font-weight: bold; */
+/* 	color: white; */
+}
+a{
+	color: white;
+	text-decoration: none;
+}
+a:visited{
+	color: white;
+}
+#mainContent{
+/* 	questo sarà da diminuire quando le pagine saranno piene o da spostare nei singoli css*/
+	min-height: 300px;
+}

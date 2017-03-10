@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<mvc:annotation-driven />
+	<context:annotation-config />
+	<context:component-scan base-package="it.recensigames.controller" />
+	<context:component-scan base-package="it.recensigames.dao" />
+	<context:component-scan base-package="it.recensigames.dao.impl" />
+	<context:component-scan base-package="it.recensigames.model" />
+	<mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
+	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+	
+	<!-- EntityManagerFactory -->
+	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+		<property name="persistenceUnitName" value="recensigamesDS" />
+	</bean>
+
+	<!-- Vedi https://techannotation.wordpress.com/2012/10/04/spring-jta-with-jboss/ -->
+	<bean id="txManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="transactionManagerName" value="java:jboss/TransactionManager" />
+		<property name="userTransactionName" value="java:jboss/UserTransaction" />
+	</bean>
+<!-- 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="prefix" value="/WEB-INF/views/" /> -->
+<!-- 		<property name="suffix" value=".html" /> -->
+<!-- 	</bean> -->
+	<!-- Enable @Transactional annotation -->
+	<tx:annotation-driven/>
+<!-- 	<tx:annotation-driven transaction-manager="txManager" /> -->
+<!-- 	<tx:jta-transaction-manager /> -->
+	<bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
+    	<property name="transactionManagerName" value="java:/TransactionManager"/>
+	</bean>
+</beans>

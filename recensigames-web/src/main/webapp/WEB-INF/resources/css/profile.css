@@ -1,0 +1,38 @@
+#footer{
+	background-color: #3887d6;
+	height: 80px; 
+/* 	position: absolute; */
+/*     bottom: 0; */
+    width:100%; 
+/*     opacity: 1; */
+}
+#centerFooter{
+	margin-top: 25px;
+}
+#youtubeLink{
+	color: white;
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: large;
+}
+#youtubeLink:hover{
+	text-decoration: none;
+}
+#facebookLink{
+	color: white;
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: large;
+}
+#facebookLink:hover{
+	text-decoration: none;
+}
+#lowFootLink{
+	color: white;
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: large;
+}
+#lowFootLink:hover{
+	text-decoration: none;
+}

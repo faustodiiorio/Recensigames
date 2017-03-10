@@ -1,0 +1,56 @@
+<div data-ng-app="search" data-ng-controller="SearchController as search">
+	<div class="container">
+		<div class="row">
+			<h3 id="risultatiTitoloLabel" class="col-md-offset-4" data-ng-if="search.byTitle">
+			Risultati della ricerca per titolo
+			</h3>
+			<h3 id="risultatiConsoleLabel" class="col-md-offset-4" data-ng-if="search.byConsole">
+				Risultati della ricerca per console
+			</h3>
+		</div>
+		<div class="row">
+			<label class="col-md-3" id="filtersLabel">Filtra i risultati della ricerca</label>
+			<button id="advancedSearch" type="button" class="btn btn-primary"
+				data-ng-click="search.advancedSearch()">
+				Ricerca avanzata
+			</button>
+		</div>
+			<div id="filters" data-ng-show="search.isHidden" class="col-md-4 col-md-offset-1"> 
+				<div class="row" style="margin-top: 15px;">
+					<div class="label col-md-2" id="consoleFilter">Filtra per console</div>
+					<div class="dropdown col-md-offset-5" id="filterButtons">
+						<button class="btn btn-success dropdown-toggle" type="button"
+							data-toggle="dropdown">Console <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li data-ng-repeat="g in search.game"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 15px;">
+					<div id="categoryFilter" class="label col-md-2">Filtra per categoria</div>
+					<div class="dropdown col-md-offset-5" id="filterButtons">
+						<button class="btn btn-success dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							Categoria <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu col-md-offset-3">
+							<li data-ng-repeat="g in search.game"></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 15px;">
+					<div id="solutionFilter" class="label col-md-2">Filtra per recensioni</div>
+					<div class="dropdown col-md-offset-5" id="filterButtons">
+						<button class="btn btn-success dropdown-toggle" type="button"
+							data-toggle="dropdown">
+							Recensioni <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu col-md-offset-3">
+							<li data-ng-repeat="g in search.game"></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,73 @@
+<div data-ng-controller="HeaderController as header">
+	<div id="header" class="row">
+		<h1 id="title" class="col-md-3 col-md-offset-1">
+			<a id="title" data-ui-sref="home">RECENSIGAMES</a>
+		</h1>
+		<h3 id="info"></h3>
+		<h3 id="log" class="col-md-offset-3" data-ng-if="!logged">
+				<b><a id="lang-text" data-ui-sref="login">Accedi</a> / <a id="lang-text" data-ui-sref="register">Registrati</a></b>
+		</h3>
+		<div id="loggedUser" class="col-md-offset-6 dropdown" data-ng-if="logged">
+			<label id="welcome">Benvenuto</label>
+			<button id="welcome-username" class="btn btn-success dropdown-toggle" type="button"
+				data-toggle="dropdown">{{user.username}}<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" id="drop-user">
+				<li id="welcome-text"><a data-ui-sref="profile">Profilo</a></li>
+				<li id="welcome-text"><a data-ng-click="header.logout()">Logout</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="body" class="container">
+		<nav id="navbar" class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+	<!--  					<form:form action="${pageContext.servletContext.contextPath}/search/byTitle" method="get">  -->
+						<li id="dropdown" class="dropdown"><a id="dropText" href="#"
+							class="dropdown-toggle" data-toggle="dropdown">Console <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown">Sony</a>
+									<ul class="dropdown-menu" id="sub-dropdown">
+										<li><a data-ng-repeat="consoleSony in header.consolesSony"
+										 data-ui-sref="searchByConsole({nomeConsole: consoleSony})">{{consoleSony}}</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown">Nintendo</a>
+									<ul class="dropdown-menu" id="sub-dropdown">
+										<li><a data-ng-repeat="consoleNintendo in header.consolesNintendo"
+										 data-ui-sref="searchByConsole({nomeConsole: consoleNintendo})">{{consoleNintendo}}</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown">Microsoft</a>
+									<ul class="dropdown-menu" id="sub-dropdown">
+										<li><a data-ng-repeat="consoleMicrosoft in header.consolesMicrosoft"
+										data-ui-sref="searchByConsole({nomeConsole: consoleMicrosoft})">{{consoleMicrosoft}}</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+	<!--  					</form:form>  -->
+					</ul>
+					<form class="navbar-form navbar-right" role="search"				
+						method="get">
+						<div class="form-group">
+							<input id="inputTitle"
+								data-ng-change="header.validate()" data-ng-model="header.search"
+								type="text" class="form-control" list="titles"
+								placeholder="Ricerca per titolo" />
+							<datalist id="titles">
+								<option id="listResult" data-ng-repeat="g in header.gameTitles | filter:search" value="{{g}}">{{g}}
+							</datalist>
+								</div>
+						<button type="submit" class="btn btn-default" id="submitTitle"
+						data-ui-sref="searchByTitle({titoloGioco: 'search'})">Submit</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+	</div>
+</div>

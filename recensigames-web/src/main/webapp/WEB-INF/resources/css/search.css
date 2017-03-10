@@ -1,0 +1,51 @@
+#all{
+	min-height: 100%;
+	position: relative;
+}
+#body{
+	color: white;
+/* 	min-height: 472px; */
+}
+#filtersLabel{
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: x-large;
+	color: #3887d6;
+}
+#filters{
+	background-color: #3887d6;
+	color: white;
+	border-radius: 5px;
+}
+#filterButtons{
+	margin-top: -5px;
+}
+#risultatiTitoloLabel{
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: x-large;
+	color: #3887d6;
+}
+#advancedFilters{
+/* 	display: none; */
+}
+#advancedSearch{
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: medium;
+}
+#categoryFilter{
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: medium;
+}
+#consoleFilter{
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: medium;
+}
+#solutionFilter{
+	font-family: 'Indie Flower';
+	font-weight: bold;
+	font-size: medium;
+}

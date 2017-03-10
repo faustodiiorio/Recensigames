@@ -1,0 +1,38 @@
+<div class="container" id="loginForm" data-ng-controller="LoginController as login">
+	<form name="form" class="form-horizontal" method="post" novalidate data-ng-submit="login.login()">
+		<div class="row">
+			<div class="form-group">
+				<label class="col-md-4 control-label">Username</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+				        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				  		<input name="username" placeholder="Username" class="form-control"
+				  		type="text" required data-ng-minlength="4" data-ng-model="login.username"
+				  		data-ng-pattern="/^(?=.*[a-z])(?=.*\d)(?=.*[._-])[a-z\d._-]/"></input>
+		    		</div>
+		    		<label class="error" data-ng-show="form.username.$error.required && !form.username.$pristine">Campo obbligatorio</label>
+		    		<label class="error" data-ng-show="form.username.$error.minlength">Lunghezza minima 4 caratteri</label>
+				  	<label class="error" data-ng-show="form.username.$error.pattern">Lettere minuscole, numeri, punto, trattino o trattino basso</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group">
+				<label class="col-md-4 control-label">Password</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+				        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+				  		<input name="password" placeholder="Password" data-ng-minlength="8" class="form-control" type="password" required data-ng-model="login.password"
+				  		data-ng-pattern="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&_-£%^§°])[A-Za-z\d$@$!%*#?&_-£%^§°]/"></input>
+		    		</div>
+		    		<label class="error" data-ng-show="form.password.$error.required && !form.password.$pristine">Campo obbligatorio</label>
+		    		<label class="error" data-ng-show="form.password.$error.minlength">Lunghezza minima 8 caratteri</label>
+				  	<label class="error" data-ng-show="form.password.$error.pattern">Lettere maiuscole e minuscole, numeri e caratteri speciali</label>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="submit">
+			<button type="submit" data-ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+</div>

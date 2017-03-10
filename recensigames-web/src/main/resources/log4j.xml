@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	
+	<!-- File di debug -->
+	<appender name="debugAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="File" value="c:\\logRecensigames\\debug.log" />
+		<param name="Threshold" value="DEBUG"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-5p %d{ISO8601} %C [%t]: %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- File di root_errors -->
+	<appender name="rootErrorsAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="File" value="c:\\logRecensigames\\root_errors.log" />
+		<param name="Threshold" value="ERROR"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-5p %d{ISO8601} %C [%t]: %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- File di error -->
+	<appender name="errorAppender"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<param name="File" value="c:\\logRecensigames\\error.log" />
+		<param name="Threshold" value="ERROR"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-5p %d{ISO8601} %C [%t]: %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Configurazione console -->
+	<appender name="CONSOLEAPPENDER"
+		class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-5p %d{ISO8601} %C [%t]: %m%n" />
+		</layout>
+	</appender>
+	
+	
+	<logger name="it">
+		<level value="debug" />
+		<appender-ref ref="debugAppender" />
+		<appender-ref ref="errorAppender" />
+	</logger>
+	
+	<logger name="org">
+		<level value="error" />
+		<appender-ref ref="rootErrorsAppender" />
+	</logger>
+	
+	<root>
+		<priority value="DEBUG" />
+	</root>
+</log4j:configuration>
+
+<!-- In tutti i file, per la data e l'ora, viene usato lo standard ISO8601 -->
