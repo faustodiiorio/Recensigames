@@ -63,6 +63,10 @@ public class Gioco implements Serializable {
 	@ManyToMany(mappedBy="listaGiochi")
 //	@JoinColumn(name="ID")
 	private List<Console> listaConsoles;
+	
+	//bi-directional one-to-many association to Domanda
+	@OneToMany(mappedBy="gioco")
+	private List<Domanda> listaDomande;
 
 	public Gioco() {
 	}
@@ -167,5 +171,13 @@ public class Gioco implements Serializable {
 
 	public void setListaConsoles(List<Console> listaConsoles) {
 		this.listaConsoles = listaConsoles;
+	}
+
+	public List<Domanda> getListaDomande() {
+		return listaDomande;
+	}
+
+	public void setListaDomande(List<Domanda> listaDomande) {
+		this.listaDomande = listaDomande;
 	}
 }

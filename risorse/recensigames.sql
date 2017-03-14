@@ -84,8 +84,11 @@ CREATE TABLE `domande` (
   `TESTO` tinytext NOT NULL,
   `ID_UTENTE` int(11) NOT NULL,
   `DATA` date NOT NULL,
+  `ID_GIOCO` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `fk_domande_utenti_idx` (`ID_UTENTE`),
+  KEY `fk_domande_giochi_idx` (`ID_GIOCO`),
+  CONSTRAINT `fk_domande_giochi` FOREIGN KEY (`ID_GIOCO`) REFERENCES `giochi` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_domande_utenti` FOREIGN KEY (`ID_UTENTE`) REFERENCES `utenti` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -340,4 +343,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-10 17:46:52
+-- Dump completed on 2017-03-14 17:40:21

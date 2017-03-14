@@ -54,9 +54,19 @@
 		</named-query>
 	</entity>
 	<entity name="Domanda" class="it.recensigames.model.Domanda">
-	
+		<named-query name="getAllQuestions">
+			<query>Select d from Domanda d</query>
+		</named-query>
+		<named-query name="getQuestionsByGame">
+			<query>Select d from Domanda d where d.gioco = :gioco</query>
+		</named-query>
 	</entity>
 	<entity name="Risposta" class="it.recensigames.model.Risposta">
-	
+		<named-query name="getAllAnswers">
+			<query>Select r from Risposta r</query>
+		</named-query>
+		<named-query name="getAnswersByQuestion">
+			<query>Select r from Risposta r where r.domanda = :domanda</query>
+		</named-query>
 	</entity>
 </entity-mappings>

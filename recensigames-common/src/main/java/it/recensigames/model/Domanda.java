@@ -5,19 +5,18 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 /**
  * The persistent class for the domande database table.
  * 
  */
 @Entity
-@Table(name="domande")
-@NamedQuery(name="Domanda.findAll", query="SELECT d FROM Domanda d")
+@Table(name = "domande")
+@NamedQuery(name = "Domanda.findAll", query = "SELECT d FROM Domanda d")
 public class Domanda implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Temporal(TemporalType.DATE)
@@ -28,15 +27,20 @@ public class Domanda implements Serializable {
 
 	private String titolo;
 
-	//bi-directional many-to-one association to Utente
+	// bi-directional many-to-one association to Utente
 	@ManyToOne
-	@JoinColumn(name="ID_UTENTE")
+	@JoinColumn(name = "ID_UTENTE")
 	private Utente utente;
 
-	//bi-directional many-to-one association to Risposte
-	@OneToMany(mappedBy="domanda")
+	// bi-directional many-to-one association to Risposte
+	@OneToMany(mappedBy = "domanda")
 	private List<Risposta> listaRisposte;
 
+	// bi-directional many-to-one association to Gioco
+	@ManyToOne
+	@JoinColumn(name="ID_GIOCO")
+	private Gioco gioco;
+	
 	public Domanda() {
 	}
 
