@@ -112,7 +112,7 @@ DROP TABLE IF EXISTS `giochi`;
 CREATE TABLE `giochi` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `TITOLO_GIOCO` varchar(100) NOT NULL,
-  `VOTO` float NOT NULL,
+  `VOTO` decimal(4,2) NOT NULL,
   `TRAMA` varchar(300) NOT NULL,
   `COPERTINA` varchar(100) NOT NULL,
   `TRAILER` varchar(100) NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE `giochi` (
 
 LOCK TABLES `giochi` WRITE;
 /*!40000 ALTER TABLE `giochi` DISABLE KEYS */;
-INSERT INTO `giochi` VALUES (1,'The Legend of Zelda: Ocarina of Time',10,'Narra le gesta di Link contro Ganondorf per salvare Zelda','www.google.com','www.google.com','1998-11-11',8),(2,'Final Fantasy VII',10,'Narra le gesta di Cloud Strife contro Sephirot','www.google.com','www.google.com','1997-11-17',5),(3,'Metal Gear Solid',10,'Narra le gesta di Solid Snake contro i membri della Fox Hound, capeggiati da Liquid Snake','www.google.com','www.google.com','1999-02-26',2);
+INSERT INTO `giochi` VALUES (1,'The Legend of Zelda: Ocarina of Time',10.00,'Narra le gesta di Link contro Ganondorf per salvare Zelda','www.google.com','www.google.com','1998-11-11',8),(2,'Final Fantasy VII',10.00,'Narra le gesta di Cloud Strife contro Sephirot','www.google.com','www.google.com','1997-11-17',5),(3,'Metal Gear Solid',10.00,'Narra le gesta di Solid Snake contro i membri della Fox Hound, capeggiati da Liquid Snake','www.google.com','www.google.com','1999-02-26',2);
 /*!40000 ALTER TABLE `giochi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,16 +250,19 @@ DROP TABLE IF EXISTS `recensioni`;
 CREATE TABLE `recensioni` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `TITOLO_RECENSIONE` varchar(45) NOT NULL,
-  `FEEDBACK` float DEFAULT NULL,
+  `FEEDBACK` decimal(3,2) DEFAULT NULL,
   `DESCRIZIONE` mediumtext NOT NULL,
   `VIDEO_RECENSIONE` varchar(200) DEFAULT NULL,
   `TIPOLOGIA` varchar(10) NOT NULL,
   `ID_GIOCO` int(11) NOT NULL,
   `ID_UTENTE` int(11) NOT NULL,
+  `ID_UTENTE_SEGNALIBRO` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `fk_gioco_recensione_idx` (`ID_GIOCO`),
   KEY `fk_utente_recensione_idx` (`ID_UTENTE`),
+  KEY `fk_segnalibro_idx` (`ID_UTENTE_SEGNALIBRO`),
   CONSTRAINT `fk_gioco_recensione` FOREIGN KEY (`ID_GIOCO`) REFERENCES `giochi` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_segnalibro` FOREIGN KEY (`ID_UTENTE_SEGNALIBRO`) REFERENCES `utenti` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_utente_recensione` FOREIGN KEY (`ID_UTENTE`) REFERENCES `utenti` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -320,6 +323,7 @@ CREATE TABLE `utenti` (
   `EMAIL` varchar(100) NOT NULL,
   `BANNATO` varchar(5) NOT NULL,
   `TIPOLOGIA` varchar(10) NOT NULL,
+  `PUNTEGGIO` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -330,7 +334,7 @@ CREATE TABLE `utenti` (
 
 LOCK TABLES `utenti` WRITE;
 /*!40000 ALTER TABLE `utenti` DISABLE KEYS */;
-INSERT INTO `utenti` VALUES (1,'Fausto','Di Iorio','1994-01-22','fausto.94','@Tempor6','fausto.94@live.it','NO','MASTER');
+INSERT INTO `utenti` VALUES (1,'Fausto','Di Iorio','1994-01-22','fausto.94','@Tempor6','fausto.94@live.it','NO','MASTER',0);
 /*!40000 ALTER TABLE `utenti` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -343,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-14 17:40:21
+-- Dump completed on 2017-03-17 17:53:01
