@@ -3,11 +3,10 @@ package it.recensigames.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
 
-/**
- * The persistent class for the recensioni database table.
- * 
- */
+
+@Component
 @Entity
 @Table(name="recensioni")
 @NamedQuery(name="Recensione.findAll", query="SELECT r FROM Recensione r")
@@ -40,6 +39,10 @@ public class Recensione implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_UTENTE")
 	private Utente utente;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CONSOLE")
+	private Console console;
 
 	public Recensione() {
 	}
@@ -106,5 +109,21 @@ public class Recensione implements Serializable {
 
 	public void setUtenti(Utente utente) {
 		this.utente = utente;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public Console getConsole() {
+		return console;
+	}
+
+	public void setConsole(Console console) {
+		this.console = console;
 	}
 }

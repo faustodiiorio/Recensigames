@@ -85,9 +85,12 @@ CREATE TABLE `domande` (
   `ID_UTENTE` int(11) NOT NULL,
   `DATA` date NOT NULL,
   `ID_GIOCO` int(11) NOT NULL,
+  `ID_CONSOLE` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `fk_domande_utenti_idx` (`ID_UTENTE`),
   KEY `fk_domande_giochi_idx` (`ID_GIOCO`),
+  KEY `fk_domande_console_idx` (`ID_CONSOLE`),
+  CONSTRAINT `fk_domande_console` FOREIGN KEY (`ID_CONSOLE`) REFERENCES `consoles` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_domande_giochi` FOREIGN KEY (`ID_GIOCO`) REFERENCES `giochi` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_domande_utenti` FOREIGN KEY (`ID_UTENTE`) REFERENCES `utenti` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -257,11 +260,14 @@ CREATE TABLE `recensioni` (
   `ID_GIOCO` int(11) NOT NULL,
   `ID_UTENTE` int(11) NOT NULL,
   `ID_UTENTE_SEGNALIBRO` int(11) DEFAULT NULL,
+  `ID_CONSOLE` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `fk_gioco_recensione_idx` (`ID_GIOCO`),
   KEY `fk_utente_recensione_idx` (`ID_UTENTE`),
   KEY `fk_segnalibro_idx` (`ID_UTENTE_SEGNALIBRO`),
+  KEY `fk_recensioni_console_idx` (`ID_CONSOLE`),
   CONSTRAINT `fk_gioco_recensione` FOREIGN KEY (`ID_GIOCO`) REFERENCES `giochi` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_recensioni_console` FOREIGN KEY (`ID_CONSOLE`) REFERENCES `consoles` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_segnalibro` FOREIGN KEY (`ID_UTENTE_SEGNALIBRO`) REFERENCES `utenti` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_utente_recensione` FOREIGN KEY (`ID_UTENTE`) REFERENCES `utenti` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -347,4 +353,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-03-17 17:53:01
+-- Dump completed on 2017-03-20 17:52:56

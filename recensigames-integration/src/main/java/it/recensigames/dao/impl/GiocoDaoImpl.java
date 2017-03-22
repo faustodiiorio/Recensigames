@@ -12,7 +12,7 @@ import it.recensigames.model.Gioco;
 @Component
 public class GiocoDaoImpl implements GiocoDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	@Override
 	public List<Gioco> getAllGames() {
 		return entityManager.createNamedQuery("getAllGames").getResultList();

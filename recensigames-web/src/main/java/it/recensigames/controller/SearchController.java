@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.recensigames.dao.ConsoleDao;
 import it.recensigames.dao.GiocoDao;
-import it.recensigames.dto.GameSearchResponse;
+import it.recensigames.dto.GameSearchDTO;
 import it.recensigames.model.Console;
 import it.recensigames.model.Gioco;
 
@@ -35,15 +35,15 @@ public class SearchController {
 	
 	@Transactional
 	@RequestMapping(value = "/getGamesByTitle", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody List<GameSearchResponse> getGamesByTitle(@RequestParam(value = "titoloGioco") String titoloGioco) {
+	public @ResponseBody List<GameSearchDTO> getGamesByTitle(@RequestParam(value = "titoloGioco") String titoloGioco) {
 		logger.info("Starting service getGamesByTitle");
-		List<GameSearchResponse> result = new ArrayList<GameSearchResponse>();
+		List<GameSearchDTO> result = new ArrayList<GameSearchDTO>();
 		if (!titoloGioco.equals("") && !titoloGioco.isEmpty()) {
-			GameSearchResponse response;
+			GameSearchDTO response;
 			List<Gioco> listaGiochi = giocoDao.getAllGames();
 			for (Gioco g : listaGiochi) {
 				if(StringUtils.containsIgnoreCase(g.getTitoloGioco(), titoloGioco)){
-					response = new GameSearchResponse();
+					response = new GameSearchDTO();
 					response.setTitolo(g.getTitoloGioco());
 					response.setConsole(g.getListaConsoles().get(0).getNomeConsole());
 					result.add(response);
@@ -56,9 +56,9 @@ public class SearchController {
 	//necessario @transactional per la lazy initialization di Gioco.listaConsole
 	@Transactional
 	@RequestMapping(value = "/getGameByTitleAndConsole", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody GameSearchResponse getGamesByTitleAndConsole(@RequestParam(value = "titoloGioco") String titoloGioco, @RequestParam(value="nomeConsole") String nomeConsole) {
+	public @ResponseBody GameSearchDTO getGamesByTitleAndConsole(@RequestParam(value = "titoloGioco") String titoloGioco, @RequestParam(value="nomeConsole") String nomeConsole) {
 		logger.info("Starting service getGameByTitleAndConsole");
-		GameSearchResponse result = new GameSearchResponse();
+		GameSearchDTO result = new GameSearchDTO();
 		Gioco response = new Gioco();
 		if (!titoloGioco.equals("") && !titoloGioco.isEmpty() && !nomeConsole.equals("") && !nomeConsole.isEmpty()){
 			response = giocoDao.getGameByTitleAndConsole(titoloGioco, nomeConsole);
@@ -70,19 +70,19 @@ public class SearchController {
 	}
 	@Transactional
 	@RequestMapping(value = "/getGamesByConsole", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody List<GameSearchResponse> getGamesByConsole(@RequestParam(value="nomeConsole") String nomeConsole) {
+	public @ResponseBody List<GameSearchDTO> getGamesByConsole(@RequestParam(value="nomeConsole") String nomeConsole) {
 		logger.info("Starting service getGamesByConsole");
-		List<GameSearchResponse> result = new ArrayList<GameSearchResponse>();
+		List<GameSearchDTO> result = new ArrayList<GameSearchDTO>();
 		if(!nomeConsole.isEmpty() && !nomeConsole.equals("")){
-			GameSearchResponse response = new GameSearchResponse();
+			GameSearchDTO response = new GameSearchDTO();
 			List<Gioco> listaGiochi = giocoDao.getGamesByConsole(nomeConsole);
 			for(Gioco g : listaGiochi){
 				response.setTitolo(g.getTitoloGioco());
 				response.setConsole(g.getListaConsoles().get(0).getNomeConsole());
 				result.add(response);
 			}
-			Collections.sort(result, new Comparator<GameSearchResponse>() {
-				public int compare(GameSearchResponse o1, GameSearchResponse o2) {
+			Collections.sort(result, new Comparator<GameSearchDTO>() {
+				public int compare(GameSearchDTO o1, GameSearchDTO o2) {
 					return o2.getConsole().compareTo(o1.getConsole());
 				}
 			});

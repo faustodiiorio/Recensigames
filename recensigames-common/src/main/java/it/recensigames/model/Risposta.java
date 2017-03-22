@@ -2,13 +2,13 @@ package it.recensigames.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 
-/**
- * The persistent class for the risposte database table.
- * 
- */
+@Component
 @Entity
 @Table(name="risposte")
 @NamedQuery(name="Risposta.findAll", query="SELECT r FROM Risposta r")

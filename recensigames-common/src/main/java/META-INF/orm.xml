@@ -44,6 +44,9 @@
 		<named-query name="getAllSolutions">
 			<query>Select r from Recensione r</query>
 		</named-query>
+		<named-query name="getReviewsByUser">
+			<query>Select r from Recensione r JOIN r.utente u where u.username = :username</query>
+		</named-query>
 	</entity>
 	<entity name="Utente" class="it.recensigames.model.Utente">
 		<named-query name="getUserByUsernameAndPassword">
@@ -60,6 +63,9 @@
 		<named-query name="getQuestionsByGame">
 			<query>Select d from Domanda d where d.gioco = :gioco</query>
 		</named-query>
+		<named-query name="getQuestionsByUser">
+			<query>Select d from Domanda d JOIN d.utente u where u.username = :username</query>
+		</named-query>
 	</entity>
 	<entity name="Risposta" class="it.recensigames.model.Risposta">
 		<named-query name="getAllAnswers">
@@ -67,6 +73,9 @@
 		</named-query>
 		<named-query name="getAnswersByQuestion">
 			<query>Select r from Risposta r where r.domanda = :domanda</query>
+		</named-query>
+		<named-query name="getAnswersByUser">
+			<query>Select r from Risposta r join r.utente u where u.username= :username</query>
 		</named-query>
 	</entity>
 </entity-mappings>

@@ -11,9 +11,13 @@ import it.recensigames.model.Recensione;
 @Component
 public class RecensioneDaoImpl implements RecensioneDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	@Override
 	public List<Recensione> getAllSolutions() {
 		return entityManager.createNamedQuery("getAllSolutions").getResultList();
+	}
+	@Override
+	public List<Recensione> getReviewsByUser(String username) {
+		return entityManager.createNamedQuery("getReviewsByUser").setParameter("username", username).getResultList();
 	}
 }

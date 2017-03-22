@@ -2,13 +2,13 @@ package it.recensigames.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 
-/**
- * The persistent class for the categorie database table.
- * 
- */
+@Component
 @Entity
 @Table(name="categorie")
 @NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")

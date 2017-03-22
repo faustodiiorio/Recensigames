@@ -1,10 +1,10 @@
 package it.recensigames.dto;
 
-public class UserCredentialsResponse {
+public class UserCredentialsDTO implements DTO{
 	private String username;
 	private String password;
 	
-	public UserCredentialsResponse() {
+	public UserCredentialsDTO() {
 	}
 	public String getUsername() {
 		return username;

@@ -1,10 +1,10 @@
 package it.recensigames.dto;
 
-public class GameSearchResponse {
+public class GameSearchDTO implements DTO{
 	private String titolo;
 	private String console;
 	
-	public GameSearchResponse() {
+	public GameSearchDTO() {
 	}
 
 	public String getTitolo() {

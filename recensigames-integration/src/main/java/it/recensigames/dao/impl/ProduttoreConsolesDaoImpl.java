@@ -12,7 +12,7 @@ import it.recensigames.model.ProduttoreConsoles;
 @Component
 public class ProduttoreConsolesDaoImpl implements ProduttoreConsolesDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	@Override
 	public List<ProduttoreConsoles> getAllConsoleProductors() {
 		return entityManager.createNamedQuery("getAllConsoleProductors").getResultList();

@@ -3,16 +3,15 @@ package it.recensigames.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.springframework.stereotype.Component;
+
 import it.recensigames.model.Domanda;
 import it.recensigames.model.Risposta;
 
 import java.util.Date;
 import java.util.List;
 
-/**
- * The persistent class for the utenti database table.
- * 
- */
+@Component
 @Entity
 @Table(name = "utenti")
 @NamedQuery(name = "Utente.findAll", query = "SELECT u FROM Utente u")

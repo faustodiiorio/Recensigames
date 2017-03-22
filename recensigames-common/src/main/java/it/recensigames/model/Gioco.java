@@ -2,14 +2,14 @@ package it.recensigames.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
 
-/**
- * The persistent class for the giochi database table.
- * 
- */
+@Component
 @Entity
 @Table(name="giochi")
 @NamedQuery(name="Gioco.findAll", query="SELECT g FROM Gioco g")

@@ -5,4 +5,5 @@ import it.recensigames.model.Recensione;
 
 public interface RecensioneDao {
 	List<Recensione> getAllSolutions();
+	List<Recensione> getReviewsByUser(String username);
 }

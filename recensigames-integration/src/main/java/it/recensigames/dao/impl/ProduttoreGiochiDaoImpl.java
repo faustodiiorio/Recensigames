@@ -10,7 +10,7 @@ import it.recensigames.model.ProduttoreGiochi;
 
 public class ProduttoreGiochiDaoImpl implements ProduttoreGiochiDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	
 	@Override
 	public List<ProduttoreGiochi> getAllGameProductors() {

@@ -2,13 +2,13 @@ package it.recensigames.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 import java.util.List;
 
-/**
- * The persistent class for the domande database table.
- * 
- */
+@Component
 @Entity
 @Table(name = "domande")
 @NamedQuery(name = "Domanda.findAll", query = "SELECT d FROM Domanda d")
@@ -40,6 +40,10 @@ public class Domanda implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_GIOCO")
 	private Gioco gioco;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CONSOLE")
+	private Console console;
 	
 	public Domanda() {
 	}
@@ -104,5 +108,21 @@ public class Domanda implements Serializable {
 		risposta.setDomanda(null);
 
 		return risposta;
+	}
+
+	public Gioco getGioco() {
+		return gioco;
+	}
+
+	public void setGioco(Gioco gioco) {
+		this.gioco = gioco;
+	}
+
+	public Console getConsole() {
+		return console;
+	}
+
+	public void setConsole(Console console) {
+		this.console = console;
 	}
 }

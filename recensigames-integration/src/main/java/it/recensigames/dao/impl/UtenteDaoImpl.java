@@ -13,7 +13,7 @@ import it.recensigames.model.Utente;
 @Component
 public class UtenteDaoImpl implements UtenteDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	@Override
 	public List<Utente> getAllUsers() {
 		return entityManager.createNamedQuery("getAllUsers").getResultList();

@@ -1,14 +1,57 @@
 <div data-ng-controller="ProfileController as profile">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="col-md-4">
-	<!-- 		i tuoi contributi -->
-			</div>
-			<div class="col-md-4">
-	<!-- 		i tuoi dati -->
-			</div>
-			<div class="col-md-4">
-	<!-- 		recensioni salvate(suggerisci/correggi l'autore, ottieni punteggio) -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-4">
+		<!-- 		i tuoi contributi(recensioni, walkthrough, domande, risposte) -->
+					<div class="panel panel-primary collapsed" data-toggle="collapse" data-target="#contribution" aria-expanded="false" aria-controls="contribution">I TUOI CONTRIBUTI</div>
+					<div id="contribution" class="panel-body collapse">
+					<div class="panel panel-primary">LE TUE RECENSIONI</div>
+						<div id="recensioni" class="row card-block">
+							<ul>
+								<li data-ng-repeat="recensione in profile.reviews"><h3>gioco: {{recensione.nomeGioco}} tipo: {{recensione.tipologia}} titolo: {{recensione.titoloRecensione}}</h3><img data-ng-src="{{recensione.img}}"></li>
+							</ul>
+						</div>
+					<div class="panel panel-primary">I TUOI WALKTHROUGH</div>
+						<div id="walkthrough" class="row card-block">
+							<ul>
+								<li data-ng-repeat="walkthrough in profile.walkthroughs"><h3>gioco: {{walkthrough.nomeGioco}} tipo: {{walkthrough.tipologia}} titolo: {{walkthrough.titoloRecensione}}</h3><img data-ng-src="{{walkthrough.img}}"></li>
+							</ul>
+						</div>
+					<div class="panel panel-primary">LE TUE DOMANDE</div>
+						<div id="domande" class="row card-block">
+							<ul>
+								<li data-ng-repeat="domanda in profile.domande"><h3>titolo: {{domanda.gameDTO.titolo}} console: {{domanda.gameDTO.console}} titoloDomanda: {{domanda.titolo}}</h3></li>
+							</ul>
+						</div>
+					<div class="panel panel-primary">LE TUE RISPOSTE</div>
+						<div id="risposte" class="row">
+							<ul>
+								<li data-ng-repeat="risposta in profile.risposte"><h3>titolo: {{risposta.gameDTO.titolo}} console: {{risposta.gameDTO.console}} data: {{risposta.data}}</h3></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+		<!-- 		i tuoi dati -->
+					<div class="panel panel-primary collapsed" data-toggle="collapse" data-target="#personalInfo" aria-expanded="false" aria-controls="personalInfo">I TUOI DATI PERSONALI</div>
+					<div id="personalInfo" class="panel-body collapse">
+						<div class="row">Nome: {{profile.utente.nome}}</div>
+						<div class="row">Cognome: {{profile.utente.cognome}}</div>
+						<div class="row">Username: {{profile.utente.username}}</div>
+						<div class="row">Email: {{profile.utente.email}}</div>
+						<div class="row">Cambia Password:</div>
+						<div class="row"><input type="password" class="col-md-2"></div>
+						<div class="row">{{profile.utente.nome}}</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+		<!-- 		recensioni salvate(suggerisci/correggi l'autore, ottieni punteggio) -->
+					<div class="panel panel-primary collapsed" data-toggle="collapse" data-target="#savedReviews" aria-expanded="false" aria-controls="savedReviews">LE TUE RECENSIONI PREFERITE</div>
+					<div id="savedReviews" class="panel-body collapse">
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -2,13 +2,13 @@ package it.recensigames.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 
-/**
- * The persistent class for the consoles database table.
- * 
- */
+@Component
 @Entity
 @Table(name="consoles")
 @NamedQuery(name="Console.findAll", query="SELECT c FROM Console c")
@@ -40,6 +40,12 @@ public class Console implements Serializable {
 			}
 		)
 	private List<Gioco> listaGiochi;
+	
+	@OneToMany(mappedBy="console")
+	private List<Recensione> listaRecensioni;
+	
+	@OneToMany(mappedBy="console")
+	private List<Domanda> listaDomande;
 
 	public Console() {
 	}
@@ -74,5 +80,21 @@ public class Console implements Serializable {
 
 	public void setListaGiochi(List<Gioco> listaGiochi) {
 		this.listaGiochi = listaGiochi;
+	}
+
+	public List<Recensione> getListaRecensioni() {
+		return listaRecensioni;
+	}
+
+	public void setListaRecensioni(List<Recensione> listaRecensioni) {
+		this.listaRecensioni = listaRecensioni;
+	}
+
+	public List<Domanda> getListaDomande() {
+		return listaDomande;
+	}
+
+	public void setListaDomande(List<Domanda> listaDomande) {
+		this.listaDomande = listaDomande;
 	}
 }

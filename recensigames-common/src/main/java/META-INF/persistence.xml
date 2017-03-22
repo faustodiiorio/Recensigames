@@ -4,7 +4,7 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>java:jboss/recensigamesDS</jta-data-source>
 		<mapping-file>META-INF/orm.xml</mapping-file>
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+<!-- 		<exclude-unlisted-classes>false</exclude-unlisted-classes> -->
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

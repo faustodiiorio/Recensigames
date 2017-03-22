@@ -11,7 +11,7 @@ import it.recensigames.model.Console;
 @Component
 public class ConsoleDaoImpl implements ConsoleDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	@Override
 	public List<Console> getAllConsoles() {
 		return entityManager.createNamedQuery("getAllConsoles").getResultList();

@@ -11,7 +11,7 @@ import it.recensigames.model.Categoria;
 @Component
 public class CategoriaDaoImpl implements CategoriaDao {
 	@PersistenceContext(unitName="recensigamesDS")
-	EntityManager entityManager;
+	private EntityManager entityManager;
 	
 	@Override
 	public List<Categoria> getAllCategories() {

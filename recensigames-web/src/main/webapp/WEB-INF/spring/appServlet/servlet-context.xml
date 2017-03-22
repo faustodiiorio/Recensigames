@@ -8,10 +8,10 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 	<mvc:annotation-driven />
 	<context:annotation-config />
-	<context:component-scan base-package="it.recensigames.controller" />
-	<context:component-scan base-package="it.recensigames.dao" />
-	<context:component-scan base-package="it.recensigames.dao.impl" />
-	<context:component-scan base-package="it.recensigames.model" />
+	<context:component-scan base-package="it.recensigames.controller, it.recensigames.dao, it.recensigames.dao.impl, it.recensigames.model" />
+<!-- 	<context:component-scan base-package="it.recensigames.dao" /> -->
+<!-- 	<context:component-scan base-package="it.recensigames.dao.impl" /> -->
+<!-- 	<context:component-scan base-package="it.recensigames.model" /> -->
 	<mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
 	<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
 	

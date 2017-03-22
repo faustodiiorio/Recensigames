@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.recensigames.dao.UtenteDao;
-import it.recensigames.dto.UserCredentialsResponse;
+import it.recensigames.dto.UserCredentialsDTO;
 import it.recensigames.model.Utente;
 
 @Controller
@@ -25,17 +25,17 @@ public class LoginController {
 	
 	@Transactional
 	@RequestMapping(value = "/getUserByUsernameAndPassword", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody UserCredentialsResponse getUserByUsernameAndPassword(@RequestParam(value = "username") String username, @RequestParam(value="password") String password) {
+	public @ResponseBody UserCredentialsDTO getUserByUsernameAndPassword(@RequestParam(value = "username") String username, @RequestParam(value="password") String password) {
 		logger.info("Starting service getUserByUsernameAndPassword");
-		UserCredentialsResponse result = new UserCredentialsResponse();
-		Utente response = new Utente();
+		UserCredentialsDTO dto = new UserCredentialsDTO();
+		Utente utente = new Utente();
 //		controllo null safe
 		if (!username.equals("") && !username.isEmpty() && !password.equals("") && !password.isEmpty()){
-			response = utenteDao.getUserByUsernameAndPassword(username, password);
-				result.setUsername(response.getUsername());
-				result.setPassword(response.getPassword());
+			utente = utenteDao.getUserByUsernameAndPassword(username, password);
+				dto.setUsername(utente.getUsername());
+				dto.setPassword(utente.getPassword());
 		}
 		logger.info("Ending service getUserByUsernameAndPassword");
-		return result;
+		return dto;
 	}
 }
